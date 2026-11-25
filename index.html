@@ -17,19 +17,22 @@ main{max-width:1180px;margin:auto;padding:32px 22px 70px}.hero{padding:36px 0 28
 @media(max-width:600px){.hero{padding-top:24px}.hero-art{display:none}.nav small{display:none}.games{grid-template-columns:repeat(auto-fit,minmax(155px,1fr))}.cover{height:110px}.card-body{padding:12px}}
 </style>
 <link rel="stylesheet" href="./tycoon.css?v=10">
+<link rel="stylesheet" href="./zomb.css?v=1">
+<style>.games .cover.zomb-cover{background:radial-gradient(circle at 70% 20%,#d8c8ff 0 7%,transparent 8%),linear-gradient(160deg,#3a1f8f,#130b33 70%);gap:4px;font-size:3rem}.zomb-cover .zc-blocks{display:flex;gap:6px;align-items:flex-end}.zomb-cover .zc-blocks i{display:block;width:26px;border:3px solid #14161f;border-radius:4px;box-shadow:0 3px 0 #14161f}.zomb-best{position:absolute;left:10px;top:10px;z-index:2;padding:4px 9px;border-radius:10px;background:linear-gradient(#fff3a6,#ffcc1f);color:#2b1d00;border:2px solid #14161f;box-shadow:0 3px 0 #14161f;font:900 .72rem/1.1 system-ui,sans-serif}.zomb-best[data-none]{background:linear-gradient(#e9eef8,#b8c4d8)}.zomb-kills{position:absolute;right:10px;top:10px;z-index:2;padding:4px 8px;border-radius:10px;background:#14161fcc;color:#d7ffe1;font:800 .7rem/1.1 system-ui,sans-serif}.zomb-card .tag{color:#ff9be0;background:#ff3dbb1c}.zomb-card .play{background:linear-gradient(#a8ffc8,#2fd16b);color:#08321a}</style>
 </head>
 <body>
 <header><div class="nav"><div class="logo">JAYDEN<span>GAMES</span> ⚡</div><small>YOUR NEXT FAVORITE GAME IS HERE</small><span class="token-pill" id="tokenPill" title="Arcade Tokens: win mini-games to earn them, spend them in RESELL TYCOON">🎟️ <b id="tokenCount">0</b> Arcade Tokens</span></div></header>
 <main>
 <section class="hero"><div><div class="eyebrow">The arcade is open</div><h1>PLAY MORE.<br>LEVEL UP.</h1><p>From a quick arcade run to building your own shop, pick a game and jump in.</p></div>
 <div class="featured"><div class="featured-art" aria-hidden="true"><img src="./block-market.svg" width="480" height="200" alt=""></div><div class="featured-info"><div><div class="feature-kicker">FEATURED <span> / </span> BUILD &amp; TRADE</div><h2>RESELL TYCOON</h2><p>Flip stock. Build your own shop.</p></div><button class="play feature-play" onclick="launch('tycoon')">Play Tycoon <span aria-hidden="true">↗</span></button></div></div></section>
-<div class="toolbar"><input id="search" class="search" placeholder="Search games..." aria-label="Search games"><button class="filter active" data-filter="All" aria-pressed="true">All games</button><button class="filter" data-filter="Arcade" aria-pressed="false">Arcade</button><button class="filter" data-filter="Puzzle" aria-pressed="false">Puzzle</button><button class="filter" data-filter="Classic" aria-pressed="false">Classic</button><button class="filter" data-filter="Simulation" aria-pressed="false">Simulation</button></div>
-<div class="section-title"><h2>Choose your game</h2><span id="count" aria-live="polite">5 games</span></div>
+<div class="toolbar"><input id="search" class="search" placeholder="Search games..." aria-label="Search games"><button class="filter active" data-filter="All" aria-pressed="true">All games</button><button class="filter" data-filter="Arcade" aria-pressed="false">Arcade</button><button class="filter" data-filter="Puzzle" aria-pressed="false">Puzzle</button><button class="filter" data-filter="Classic" aria-pressed="false">Classic</button><button class="filter" data-filter="Simulation" aria-pressed="false">Simulation</button><button class="filter" data-filter="Survival" aria-pressed="false">Survival</button></div>
+<div class="section-title"><h2>Choose your game</h2><span id="count" aria-live="polite">6 games</span></div>
 <section class="games" id="games">
 <article class="card" data-name="neon snake" data-category="Arcade" onclick="launch('snake')"><div class="cover cyan">🐍</div><div class="card-body"><h3>Neon Snake</h3><p>Grab the glowing dots and see how long you can grow.</p><div class="card-bottom"><span class="tag">ARCADE</span><button class="play">Play now</button></div></div></article>
 <article class="card" data-name="tic tac toe" data-category="Classic" onclick="launch('ttt')"><div class="cover pink">❎⭕</div><div class="card-body"><h3>Tic-Tac-Toe</h3><p>Beat the CPU or challenge a friend in Xs and Os.</p><div class="card-bottom"><span class="tag">CLASSIC</span><button class="play">Play now</button></div></div></article>
 <article class="card" data-name="memory match" data-category="Puzzle" onclick="launch('memory')"><div class="cover purple">🧠</div><div class="card-body"><h3>Memory Match</h3><p>Flip the cards and find every matching pair.</p><div class="card-bottom"><span class="tag">PUZZLE</span><button class="play">Play now</button></div></div></article>
 <article class="card" data-name="reaction rush" data-category="Arcade" onclick="launch('reaction')"><div class="cover orange">⚡</div><div class="card-body"><h3>Reaction Rush</h3><p>Wait for the signal, then test your reaction speed.</p><div class="card-bottom"><span class="tag">ARCADE</span><button class="play">Play now</button></div></div></article>
+<article class="card zomb-card" data-name="zomb.io 3d zombie survival action tower defense" data-category="Survival" onclick="launch('zomb')"><div class="cover zomb-cover"><span class="zomb-best" id="zombBest" data-none>🏆 Best Wave —</span><span class="zomb-kills" id="zombKills" hidden></span><span aria-hidden="true">🧟</span><div class="zc-blocks" aria-hidden="true"><i style="height:22px;background:#c58b4f"></i><i style="height:34px;background:#9aa6b8"></i><i style="height:28px;background:#ffd23f"></i></div></div><div class="card-body"><h3>ZOMB.IO 3D</h3><p>Harvest by day, build towers, survive the zombie night waves.</p><div class="card-bottom"><span class="tag">SURVIVAL / ACTION</span><button class="play" aria-label="Play ZOMB.IO 3D">Play now</button></div></div></article>
 <article class="card tycoon-card" data-name="resell tycoon" data-category="Simulation" onclick="launch('tycoon')"><div class="cover tycoon-cover"><img src="./block-market.svg" width="480" height="200" alt=""></div><div class="card-body"><h3>RESELL TYCOON</h3><p>Flip stock, grow your wallet, and upgrade your shop.</p><div class="card-bottom"><span class="tag">SIMULATION</span><button class="play" aria-label="Play RESELL TYCOON">Play now</button></div></div></article>
 </section>
 <div class="footer">Made for players, by JaydenGames. <span style="color:var(--cyan)">GG!</span></div>
@@ -38,14 +41,15 @@ main{max-width:1180px;margin:auto;padding:32px 22px 70px}.hero{padding:36px 0 28
 <script src="./arcade.js?v=10"></script>
 <script>
 const modal=document.getElementById('modal'), area=document.getElementById('gameArea'), title=document.getElementById('gameTitle'), closeButton=modal.querySelector('.close');
-let miniStop=null,tycoonScript=null,tycoonStop=null,launchId=0,returnFocus=null;
+let miniStop=null,tycoonScript=null,tycoonStop=null,zombScript=null,zombStop=null,launchId=0,returnFocus=null;
 function cleanup(){
   if(miniStop){miniStop();miniStop=null}
   if(tycoonStop){tycoonStop();tycoonStop=null}
+  if(zombStop){zombStop();zombStop=null;showZombBest()}
 }
 function closeGame(){
   if(!modal.classList.contains('open'))return;
-  launchId++;cleanup();modal.classList.remove('open','tycoon-modal');area.replaceChildren();
+  launchId++;cleanup();modal.classList.remove('open','tycoon-modal','zomb-modal');area.replaceChildren();
   document.body.classList.remove('arcade-playing');returnFocus?.focus();returnFocus=null;
 }
 function loadTycoon(){
@@ -57,15 +61,39 @@ function loadTycoon(){
   }).catch(error=>{tycoonScript=null;throw error});
   return tycoonScript;
 }
+function loadZomb(){
+  if(window.ZombIO)return Promise.resolve(window.ZombIO);
+  if(!zombScript)zombScript=new Promise((resolve,reject)=>{
+    const script=document.createElement('script');script.src='./zomb.js?v=1';script.async=true;
+    script.onload=()=>window.ZombIO?resolve(window.ZombIO):reject(new Error('Game did not initialize.'));
+    script.onerror=()=>{script.remove();reject(new Error('Game could not load.'))};document.head.append(script);
+  }).catch(error=>{zombScript=null;throw error});
+  return zombScript;
+}
+function showZombBest(){
+  let st={};try{st=JSON.parse(localStorage.getItem('zomb3d.stats.v1'))||{}}catch(e){}
+  const b=document.getElementById('zombBest'),k=document.getElementById('zombKills');if(!b)return;
+  const w=Number(st.bestWave)||0,kills=Number(st.totalKills)||0;
+  if(w>0){b.textContent='🏆 Best Wave '+w+(st.goldenTrophy?' 🥇':'');b.removeAttribute('data-none')}else{b.textContent='🏆 Best Wave —';b.setAttribute('data-none','')}
+  k.hidden=!kills;k.textContent='🧟 '+kills.toLocaleString()+' eliminated';
+}
+showZombBest();window.addEventListener('storage',e=>{if(e.key==='zomb3d.stats.v1')showZombBest()});window.addEventListener('zomb-stats',showZombBest);
 function launch(which){
   if(!modal.classList.contains('open'))returnFocus=document.activeElement;
-  const id=++launchId;cleanup();document.body.classList.add('arcade-playing');modal.classList.add('open');modal.classList.toggle('tycoon-modal',which==='tycoon');closeButton.focus();
+  const id=++launchId;cleanup();document.body.classList.add('arcade-playing');modal.classList.add('open');modal.classList.toggle('tycoon-modal',which==='tycoon');modal.classList.toggle('zomb-modal',which==='zomb');closeButton.focus();
   if(JGArcade.games.includes(which))playMini(which);
   if(which==='tycoon'){
     title.textContent='RESELL TYCOON';area.innerHTML='<div class="rt-load" role="status">Opening Market Row…</div>';
     loadTycoon().then(game=>{if(id===launchId)tycoonStop=game.mount(area)}).catch(()=>{
       if(id!==launchId)return;
       area.innerHTML='<div class="rt-load">Market Row couldn’t load. <button class="play" onclick="launch(\'tycoon\')">Try again</button></div>';
+    });
+  }
+  if(which==='zomb'){
+    title.textContent='ZOMB.IO 3D';area.innerHTML='<div class="zr-load" role="status">Loading Zomb.io 3D…</div>';
+    loadZomb().then(game=>{if(id===launchId)zombStop=game.mount(area)}).catch(()=>{
+      if(id!==launchId)return;
+      area.innerHTML='<div class="zr-load">Zomb.io 3D couldn’t load. <button class="play" onclick="launch(\'zomb\')">Try again</button></div>';
     });
   }
 }
