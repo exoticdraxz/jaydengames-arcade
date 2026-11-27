@@ -8,23 +8,18 @@
 <meta name="theme-color" content="#05060d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
 <script>
-/* Global audio switch: every game's AudioContext is tracked so the cabinet's 🔊 button can mute them all. */
-(function(){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;var list=[],res=AC.prototype.resume;
-window.__jgAudio={list:list,muted:false,set:function(m){this.muted=m;list.forEach(function(c){try{m?c.suspend():res.call(c)}catch(e){}})}};
-AC.prototype.resume=function(){return window.__jgAudio.muted?Promise.resolve():res.call(this)};
-function P(o){var c=o===undefined?new AC():new AC(o);list.push(c);if(window.__jgAudio.muted){try{c.suspend()}catch(e){}}return c}
-P.prototype=AC.prototype;window.AudioContext=P;if(window.webkitAudioContext)window.webkitAudioContext=P;})();
+(function(){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;var list=[],res=AC.prototype.resume;window.__jgAudio={list:list,muted:false,set:function(m){this.muted=m;list.forEach(function(c){try{m?c.suspend():res.call(c)}catch(e){}})}};AC.prototype.resume=function(){return window.__jgAudio.muted?Promise.resolve():res.call(this)};function P(o){var c=o===undefined?new AC():new AC(o);list.push(c);if(window.__jgAudio.muted){try{c.suspend()}catch(e){}}return c}P.prototype=AC.prototype;window.AudioContext=P;if(window.webkitAudioContext)window.webkitAudioContext=P;})();
 </script>
-<link rel="stylesheet" href="./tycoon.css?v=10">
-<link rel="stylesheet" href="./zomb.css?v=2">
-<link rel="stylesheet" href="./cabinet.css?v=2">
+<link rel="stylesheet" href="./tycoon.css?v=11">
+<link rel="stylesheet" href="./zomb.css?v=3">
+<link rel="stylesheet" href="./cabinet.css?v=3">
+<link rel="stylesheet" href="./arcade-enhancements.css?v=1">
 </head>
 <body class="cab-page">
 <div class="cab-floor" aria-hidden="true"></div>
-<main class="cab-wrap" id="cabinet">
-<noscript><p style="padding:40px;text-align:center">The JaydenGames Arcade needs JavaScript to power on.</p></noscript>
-</main>
-<script src="./arcade.js?v=11"></script>
-<script src="./cabinet.js?v=2"></script>
+<main class="cab-wrap" id="cabinet"><noscript><p style="padding:40px;text-align:center">The JaydenGames Arcade needs JavaScript to power on.</p></noscript></main>
+<script src="./arcade.js?v=12"></script>
+<script src="./cabinet.js?v=3"></script>
+<script src="./arcade-enhancements.js?v=1"></script>
 </body>
 </html>
